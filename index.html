@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ChhayaStyle — Curated Picks</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #181818;
+    --border: rgba(255,255,255,0.07);
+    --accent: #c9a96e;
+    --accent2: #e8d5b0;
+    --text: #f0ece4;
+    --muted: #6b6560;
+    --card-hover: #1c1c1c;
+  }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: ‘DM Sans’, sans-serif;
+font-weight: 300;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 9999;
+opacity: 0.4;
+}
+
+/* ── HEADER ── */
+header {
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(10,10,10,0.92);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border-bottom: 1px solid var(–border);
+padding: 0 clamp(1rem, 5vw, 3rem);
+height: 64px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.logo {
+display: flex;
+flex-direction: column;
+line-height: 1;
+text-decoration: none;
+}
+
+.logo-main {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.6rem;
+font-weight: 600;
+color: var(–text);
+letter-spacing: 0.08em;
+}
+
+.logo-sub {
+font-size: 0.6rem;
+letter-spacing: 0.25em;
+color: var(–accent);
+text-transform: uppercase;
+font-weight: 400;
+}
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+
+.header-tag {
+font-size: 0.7rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–muted);
+border: 1px solid var(–border);
+padding: 0.3rem 0.75rem;
+border-radius: 2px;
+}
+
+/* ── HERO ── */
+.hero {
+position: relative;
+padding: clamp(4rem, 10vw, 7rem) clamp(1rem, 5vw, 3rem) clamp(3rem, 8vw, 5rem);
+overflow: hidden;
+}
+
+.hero-bg-line {
+position: absolute;
+top: 50%;
+left: 0;
+right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–accent) 30%, var(–accent) 70%, transparent);
+opacity: 0.12;
+transform: translateY(-50%);
+}
+
+.hero-eyebrow {
+font-size: 0.68rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 1.25rem;
+animation: fadeUp 0.8s ease both;
+}
+
+.hero-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(3rem, 8vw, 7rem);
+font-weight: 300;
+line-height: 0.95;
+letter-spacing: -0.02em;
+color: var(–text);
+max-width: 800px;
+animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.hero-title em {
+font-style: italic;
+color: var(–accent2);
+}
+
+.hero-desc {
+margin-top: 2rem;
+max-width: 420px;
+font-size: 0.875rem;
+line-height: 1.75;
+color: var(–muted);
+animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-meta {
+margin-top: 2.5rem;
+display: flex;
+align-items: center;
+gap: 2rem;
+animation: fadeUp 0.8s 0.3s ease both;
+flex-wrap: wrap;
+}
+
+.hero-stat {
+display: flex;
+flex-direction: column;
+gap: 0.15rem;
+}
+
+.hero-stat-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.8rem;
+font-weight: 300;
+color: var(–accent);
+line-height: 1;
+}
+
+.hero-stat-label {
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–muted);
+}
+
+.hero-divider {
+width: 1px;
+height: 40px;
+background: var(–border);
+}
+
+/* ── SEARCH ── */
+.search-wrap {
+padding: 0 clamp(1rem, 5vw, 3rem) 2rem;
+}
+
+.search-inner {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 3px;
+padding: 0.75rem 1.25rem;
+max-width: 520px;
+transition: border-color 0.2s;
+}
+
+.search-inner:focus-within {
+border-color: var(–accent);
+}
+
+.search-icon {
+color: var(–muted);
+flex-shrink: 0;
+width: 16px;
+height: 16px;
+}
+
+.search-input {
+background: none;
+border: none;
+outline: none;
+color: var(–text);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.85rem;
+width: 100%;
+font-weight: 300;
+}
+
+.search-input::placeholder { color: var(–muted); }
+
+/* ── SECTION HEADER ── */
+.section-header {
+padding: 0 clamp(1rem, 5vw, 3rem) 1.5rem;
+display: flex;
+align-items: baseline;
+justify-content: space-between;
+gap: 1rem;
+}
+
+.section-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(1.4rem, 3vw, 2rem);
+font-weight: 300;
+letter-spacing: 0.02em;
+color: var(–text);
+}
+
+.section-count {
+font-size: 0.7rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–muted);
+white-space: nowrap;
+}
+
+/* ── GRID ── */
+.grid {
+padding: 0 clamp(1rem, 5vw, 3rem);
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 1px;
+background: var(–border);
+border: 1px solid var(–border);
+}
+
+/* ── PRODUCT CARD ── */
+.card {
+background: var(–surface);
+display: flex;
+flex-direction: column;
+text-decoration: none;
+color: var(–text);
+transition: background 0.25s;
+position: relative;
+overflow: hidden;
+}
+
+.card:hover { background: var(–card-hover); }
+
+.card-img {
+width: 100%;
+aspect-ratio: 1;
+object-fit: cover;
+display: block;
+transition: transform 0.5s ease, filter 0.3s;
+filter: brightness(0.9) saturate(0.85);
+}
+
+.card:hover .card-img {
+transform: scale(1.04);
+filter: brightness(1) saturate(1);
+}
+
+.card-img-wrap {
+overflow: hidden;
+position: relative;
+background: var(–surface2);
+}
+
+.card-badge {
+position: absolute;
+top: 0.75rem;
+left: 0.75rem;
+font-size: 0.6rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+padding: 0.25rem 0.6rem;
+border-radius: 1px;
+font-weight: 500;
+z-index: 2;
+}
+
+.badge-new { background: var(–accent); color: #0a0a0a; }
+.badge-hot { background: #c96e6e; color: #fff; }
+.badge-sale { background: #6e9cc9; color: #fff; }
+
+.card-arrow {
+position: absolute;
+bottom: 0.75rem;
+right: 0.75rem;
+width: 30px;
+height: 30px;
+background: rgba(10,10,10,0.8);
+border: 1px solid var(–border);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+transform: translateY(4px);
+transition: opacity 0.25s, transform 0.25s;
+z-index: 2;
+}
+
+.card:hover .card-arrow {
+opacity: 1;
+transform: translateY(0);
+}
+
+.card-info {
+padding: 1rem;
+display: flex;
+flex-direction: column;
+gap: 0.35rem;
+flex: 1;
+}
+
+.card-cat {
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–accent);
+font-weight: 400;
+}
+
+.card-name {
+font-size: 0.85rem;
+line-height: 1.4;
+color: var(–text);
+font-weight: 400;
+}
+
+.card-shop {
+margin-top: auto;
+padding-top: 0.5rem;
+font-size: 0.65rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–muted);
+display: flex;
+align-items: center;
+gap: 0.4rem;
+}
+
+.card-shop::before {
+content: ‘’;
+display: inline-block;
+width: 12px;
+height: 1px;
+background: var(–muted);
+}
+
+/* ── FOOTER ── */
+footer {
+margin-top: 5rem;
+border-top: 1px solid var(–border);
+padding: 2.5rem clamp(1rem, 5vw, 3rem);
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 1rem;
+}
+
+.footer-logo {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.2rem;
+font-weight: 600;
+letter-spacing: 0.08em;
+color: var(–text);
+}
+
+.footer-note {
+font-size: 0.7rem;
+color: var(–muted);
+letter-spacing: 0.05em;
+line-height: 1.7;
+max-width: 380px;
+text-align: center;
+}
+
+.footer-socials {
+display: flex;
+gap: 1rem;
+}
+
+.footer-socials a {
+font-size: 0.65rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–muted);
+text-decoration: none;
+transition: color 0.2s;
+}
+
+.footer-socials a:hover { color: var(–accent); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(16px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+animation: fadeUp 0.5s ease both;
+}
+
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.10s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.20s; }
+.card:nth-child(5) { animation-delay: 0.25s; }
+.card:nth-child(6) { animation-delay: 0.30s; }
+.card:nth-child(7) { animation-delay: 0.35s; }
+.card:nth-child(8) { animation-delay: 0.40s; }
+.card:nth-child(n+9) { animation-delay: 0.45s; }
+
+/* ── HIDDEN ── */
+.card.hidden { display: none; }
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+.grid { grid-template-columns: repeat(2, 1fr); }
+.hero-divider { display: none; }
+.header-tag { display: none; }
+.feat-title { font-size: 1.5rem; }
+footer { flex-direction: column; align-items: flex-start; }
+.footer-note { text-align: left; }
+.hero-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+}
+
+@media (max-width: 400px) {
+.grid { grid-template-columns: 1fr 1fr; }
+.card-name { font-size: 0.78rem; }
+}
+
+/* ── SCROLL FADE IN ── */
+.reveal {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: none;
+}
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header>
+  <a class="logo" href="#">
+    <span class="logo-main">ChhayaStyle</span>
+    <span class="logo-sub">Curated Picks</span>
+  </a>
+  <div class="header-right">
+    <span class="header-tag">Affiliate Links</span>
+  </div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-bg-line"></div>
+  <p class="hero-eyebrow">✦ Hand-picked for you</p>
+  <h1 class="hero-title">Style that<br/><em>speaks</em> for itself.</h1>
+  <p class="hero-desc">Carefully curated fashion, beauty, and lifestyle finds from Amazon Australia — updated regularly with the best deals.</p>
+
+</section>
+
+<!-- SEARCH -->
+
+<div class="search-wrap">
+  <div class="search-inner">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
+    </svg>
+    <input class="search-input" type="text" id="searchInput" placeholder="Search products…" />
+  </div>
+</div>
+
+<!-- GRID SECTION -->
+
+<div class="section-header reveal">
+  <h2 class="section-title">All Picks</h2>
+  <span class="section-count" id="countLabel">40 items</span>
+</div>
+
+<div class="grid" id="productGrid">
+
+  <!-- FASHION -->
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="fashion" data-name="Floral Printed Kurta Set">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-new">New</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80" alt="Floral Printed Kurta Set" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Fashion</span>
+      <span class="card-name">Floral Printed Kurta Set</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="beauty" data-name="Glow Serum Vitamin C">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-hot">Trending</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80" alt="Glow Serum" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Beauty</span>
+      <span class="card-name">Glow Serum Vitamin C</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="jewellery" data-name="Oxidised Silver Earrings">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=400&q=80" alt="Silver Earrings" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Jewellery</span>
+      <span class="card-name">Oxidised Silver Earrings</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="bags" data-name="Structured Tote Bag">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-sale">Sale</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80" alt="Tote Bag" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Bags</span>
+      <span class="card-name">Structured Tote Bag</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="fashion" data-name="Wrap Midi Dress">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=80" alt="Midi Dress" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Fashion</span>
+      <span class="card-name">Wrap Midi Dress</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="shoes" data-name="Block Heel Sandals">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-new">New</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80" alt="Sandals" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Shoes</span>
+      <span class="card-name">Block Heel Sandals</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="beauty" data-name="Rose Clay Face Mask">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80" alt="Face Mask" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Beauty</span>
+      <span class="card-name">Rose Clay Face Mask</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="home" data-name="Scented Soy Candle Set">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-hot">Bestseller</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1602874801006-e26ed58e6e75?w=400&q=80" alt="Candle Set" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Home & Living</span>
+      <span class="card-name">Scented Soy Candle Set</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="fashion" data-name="Linen Co-ord Set">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" alt="Linen Co-ord" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Fashion</span>
+      <span class="card-name">Linen Co-ord Set</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="jewellery" data-name="Kundan Choker Necklace">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-new">New</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80" alt="Choker Necklace" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Jewellery</span>
+      <span class="card-name">Kundan Choker Necklace</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="wellness" data-name="Jade Roller & Gua Sha Set">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1601171042460-d2a90d5e5efb?w=400&q=80" alt="Jade Roller" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Wellness</span>
+      <span class="card-name">Jade Roller & Gua Sha Set</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="bags" data-name="Crescent Shoulder Bag">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-hot">Trending</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&q=80" alt="Shoulder Bag" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Bags</span>
+      <span class="card-name">Crescent Shoulder Bag</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="beauty" data-name="10-Shade Lip Kit">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80" alt="Lip Kit" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Beauty</span>
+      <span class="card-name">10-Shade Lip Kit</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="shoes" data-name="Embroidered Juttis">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-new">New</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400&q=80" alt="Juttis" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Shoes</span>
+      <span class="card-name">Embroidered Juttis</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="home" data-name="Boho Macramé Wall Hanging">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=400&q=80" alt="Wall Hanging" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Home & Living</span>
+      <span class="card-name">Boho Macramé Wall Hanging</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="fashion" data-name="Printed Palazzo Pants">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-sale">Sale</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt="Palazzo Pants" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Fashion</span>
+      <span class="card-name">Printed Palazzo Pants</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="wellness" data-name="Aromatherapy Diffuser">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" alt="Diffuser" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Wellness</span>
+      <span class="card-name">Aromatherapy Diffuser</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="jewellery" data-name="Gold-Plated Bangles Set">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-hot">Bestseller</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400&q=80" alt="Bangles" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Jewellery</span>
+      <span class="card-name">Gold-Plated Bangles Set</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="bags" data-name="Woven Rattan Clutch">
+    <div class="card-img-wrap">
+      <img class="card-img" src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&q=80" alt="Rattan Clutch" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Bags</span>
+      <span class="card-name">Woven Rattan Clutch</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+  <a class="card" href="https://amzn.to/example" target="_blank" rel="noopener" data-cat="home" data-name="Marble Effect Planter">
+    <div class="card-img-wrap">
+      <span class="card-badge badge-new">New</span>
+      <img class="card-img" src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&q=80" alt="Planter" loading="lazy"/>
+      <div class="card-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="card-cat">Home & Living</span>
+      <span class="card-name">Marble Effect Planter</span>
+      <span class="card-shop">Amazon</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <span class="footer-logo">ChhayaStyle</span>
+  <p class="footer-note">*As an Affiliate Associate, ChhayaStyle earns from qualifying purchases. All links on this page are Amazon Australia affiliate links. Prices and availability may vary.</p>
+  <div class="footer-socials">
+    <a href="https://www.tiktok.com/@your_chhaya" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.amazon.com.au" target="_blank" rel="noopener">Amazon AU</a>
+  </div>
+</footer>
+
+<script>
+  // ── SEARCH ──
+  const searchInput = document.getElementById('searchInput');
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const countLabel = document.getElementById('countLabel');
+
+  function filterCards() {
+    const q = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+    cards.forEach(card => {
+      const name = card.dataset.name.toLowerCase();
+      if (!q || name.includes(q)) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    countLabel.textContent = visible + ' item' + (visible !== 1 ? 's' : '');
+  }
+
+  searchInput.addEventListener('input', filterCards);
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // init count
+  filterCards();
+</script>
+
+</body>
+</html>
