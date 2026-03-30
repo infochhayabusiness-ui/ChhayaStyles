@@ -20,7 +20,6 @@
   }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -32,7 +31,6 @@ min-height: 100vh;
 overflow-x: hidden;
 }
 
-/* ── NOISE TEXTURE OVERLAY ── */
 body::before {
 content: ‘’;
 position: fixed;
@@ -43,7 +41,7 @@ z-index: 9999;
 opacity: 0.4;
 }
 
-/* ── HEADER ── */
+/* HEADER */
 header {
 position: sticky;
 top: 0;
@@ -59,15 +57,10 @@ align-items: center;
 justify-content: space-between;
 }
 
-.logo {
-display: flex;
-flex-direction: column;
-line-height: 1;
-text-decoration: none;
-}
+.logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
 
 .logo-main {
-font-family: 'Cormorant Garamond', serif;
+font-family: ‘Cormorant Garamond’, serif;
 font-size: 2.08rem;
 font-weight: 600;
 color: #135029;
@@ -82,11 +75,7 @@ text-transform: uppercase;
 font-weight: 400;
 }
 
-.header-right {
-display: flex;
-align-items: center;
-gap: 1.5rem;
-}
+.header-right { display: flex; align-items: center; gap: 1.5rem; }
 
 .header-tag {
 font-size: 0.7rem;
@@ -98,7 +87,7 @@ padding: 0.3rem 0.75rem;
 border-radius: 2px;
 }
 
-/* ── HERO ── */
+/* HERO */
 .hero {
 position: relative;
 padding: clamp(4rem, 10vw, 7rem) clamp(1rem, 5vw, 3rem) clamp(3rem, 8vw, 5rem);
@@ -107,9 +96,7 @@ overflow: hidden;
 
 .hero-bg-line {
 position: absolute;
-top: 50%;
-left: 0;
-right: 0;
+top: 50%; left: 0; right: 0;
 height: 1px;
 background: linear-gradient(90deg, transparent, var(–accent) 30%, var(–accent) 70%, transparent);
 opacity: 0.12;
@@ -136,10 +123,7 @@ max-width: 800px;
 animation: fadeUp 0.8s 0.1s ease both;
 }
 
-.hero-title em {
-font-style: italic;
-color: var(–accent2);
-}
+.hero-title em { font-style: italic; color: var(–accent2); }
 
 .hero-desc {
 margin-top: 2rem;
@@ -150,46 +134,8 @@ color: var(–muted);
 animation: fadeUp 0.8s 0.2s ease both;
 }
 
-.hero-meta {
-margin-top: 2.5rem;
-display: flex;
-align-items: center;
-gap: 2rem;
-animation: fadeUp 0.8s 0.3s ease both;
-flex-wrap: wrap;
-}
-
-.hero-stat {
-display: flex;
-flex-direction: column;
-gap: 0.15rem;
-}
-
-.hero-stat-num {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 1.8rem;
-font-weight: 300;
-color: var(–accent);
-line-height: 1;
-}
-
-.hero-stat-label {
-font-size: 0.65rem;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–muted);
-}
-
-.hero-divider {
-width: 1px;
-height: 40px;
-background: var(–border);
-}
-
-/* ── SEARCH ── */
-.search-wrap {
-padding: 0 clamp(1rem, 5vw, 3rem) 2rem;
-}
+/* SEARCH */
+.search-wrap { padding: 0 clamp(1rem, 5vw, 3rem) 1.25rem; }
 
 .search-inner {
 display: flex;
@@ -203,16 +149,9 @@ max-width: 520px;
 transition: border-color 0.2s;
 }
 
-.search-inner:focus-within {
-border-color: var(–accent);
-}
+.search-inner:focus-within { border-color: var(–accent); }
 
-.search-icon {
-color: var(–muted);
-flex-shrink: 0;
-width: 16px;
-height: 16px;
-}
+.search-icon { color: var(–muted); flex-shrink: 0; width: 16px; height: 16px; }
 
 .search-input {
 background: none;
@@ -227,7 +166,59 @@ font-weight: 300;
 
 .search-input::placeholder { color: var(–muted); }
 
-/* ── SECTION HEADER ── */
+/* STORE FILTER TABS */
+.store-tabs {
+padding: 0 clamp(1rem, 5vw, 3rem) 2rem;
+display: flex;
+gap: 0.6rem;
+flex-wrap: wrap;
+}
+
+.store-tab {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.55rem 1.2rem;
+border: 1.5px solid var(–border);
+border-radius: 3px;
+background: none;
+color: var(–muted);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.75rem;
+font-weight: 500;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.store-tab:hover {
+border-color: var(–accent);
+color: var(–accent);
+background: rgba(19,80,41,0.05);
+}
+
+.store-tab.active {
+background: var(–accent);
+border-color: var(–accent);
+color: #ffffff;
+}
+
+.tab-dot {
+width: 7px;
+height: 7px;
+border-radius: 50%;
+flex-shrink: 0;
+}
+
+.tab-dot-all        { background: var(–muted); }
+.tab-dot-amazon     { background: #ff9900; }
+.tab-dot-shein      { background: #e8006a; }
+.tab-dot-aliexpress { background: #ff6a00; }
+
+.store-tab.active .tab-dot { background: #ffffff; }
+
+/* SECTION HEADER */
 .section-header {
 padding: 0 clamp(1rem, 5vw, 3rem) 1.5rem;
 display: flex;
@@ -252,7 +243,7 @@ color: var(–muted);
 white-space: nowrap;
 }
 
-/* ── GRID ── */
+/* GRID */
 .grid {
 padding: 0 clamp(1rem, 5vw, 3rem);
 display: grid;
@@ -262,7 +253,7 @@ background: var(–border);
 border: 1px solid var(–border);
 }
 
-/* ── PRODUCT CARD ── */
+/* CARD */
 .card {
 background: var(–surface);
 display: flex;
@@ -272,9 +263,19 @@ color: var(–text);
 transition: background 0.25s;
 position: relative;
 overflow: hidden;
+animation: fadeUp 0.5s ease both;
 }
 
 .card:hover { background: var(–card-hover); }
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.10s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.20s; }
+.card:nth-child(5) { animation-delay: 0.25s; }
+.card:nth-child(6) { animation-delay: 0.30s; }
+.card:nth-child(7) { animation-delay: 0.35s; }
+.card:nth-child(8) { animation-delay: 0.40s; }
+.card:nth-child(n+9) { animation-delay: 0.45s; }
 
 .card-img {
 width: 100%;
@@ -285,10 +286,7 @@ transition: transform 0.5s ease, filter 0.3s;
 filter: brightness(0.9) saturate(0.85);
 }
 
-.card:hover .card-img {
-transform: scale(1.04);
-filter: brightness(1) saturate(1);
-}
+.card:hover .card-img { transform: scale(1.04); filter: brightness(1) saturate(1); }
 
 .card-img-wrap {
 overflow: hidden;
@@ -296,22 +294,24 @@ position: relative;
 background: var(–surface2);
 }
 
-.card-badge {
+/* Store label badge on card image */
+.store-badge {
 position: absolute;
-top: 0.75rem;
-left: 0.75rem;
-font-size: 0.6rem;
-letter-spacing: 0.15em;
+top: 0.65rem;
+right: 0.65rem;
+font-size: 0.55rem;
+font-weight: 700;
+letter-spacing: 0.08em;
 text-transform: uppercase;
-padding: 0.25rem 0.6rem;
-border-radius: 1px;
-font-weight: 500;
-z-index: 2;
+padding: 0.2rem 0.55rem;
+border-radius: 2px;
+z-index: 3;
 }
 
-.badge-new { background: var(–accent); color: #0a0a0a; }
-.badge-hot { background: #c96e6e; color: #fff; }
-.badge-sale { background: #6e9cc9; color: #fff; }
+.badge-amazon     { background: #ff9900; color: #000; }
+.badge-shein      { background: #e8006a; color: #fff; }
+.badge-aliexpress { background: #ff6a00; color: #fff; }
+.badge-other      { background: #555555; color: #fff; }
 
 .card-arrow {
 position: absolute;
@@ -331,10 +331,7 @@ transition: opacity 0.25s, transform 0.25s;
 z-index: 2;
 }
 
-.card:hover .card-arrow {
-opacity: 1;
-transform: translateY(0);
-}
+.card:hover .card-arrow { opacity: 1; transform: translateY(0); }
 
 .card-info {
 padding: 1rem;
@@ -379,7 +376,7 @@ height: 1px;
 background: var(–muted);
 }
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer {
 margin-top: 5rem;
 border-top: 1px solid var(–border);
@@ -408,10 +405,7 @@ max-width: 380px;
 text-align: center;
 }
 
-.footer-socials {
-display: flex;
-gap: 1rem;
-}
+.footer-socials { display: flex; gap: 1rem; }
 
 .footer-socials a {
 font-size: 0.65rem;
@@ -424,38 +418,22 @@ transition: color 0.2s;
 
 .footer-socials a:hover { color: var(–accent); }
 
-/* ── ANIMATIONS ── */
+/* ANIMATIONS */
 @keyframes fadeUp {
 from { opacity: 0; transform: translateY(16px); }
 to   { opacity: 1; transform: translateY(0); }
 }
 
-.card {
-animation: fadeUp 0.5s ease both;
-}
-
-.card:nth-child(1) { animation-delay: 0.05s; }
-.card:nth-child(2) { animation-delay: 0.10s; }
-.card:nth-child(3) { animation-delay: 0.15s; }
-.card:nth-child(4) { animation-delay: 0.20s; }
-.card:nth-child(5) { animation-delay: 0.25s; }
-.card:nth-child(6) { animation-delay: 0.30s; }
-.card:nth-child(7) { animation-delay: 0.35s; }
-.card:nth-child(8) { animation-delay: 0.40s; }
-.card:nth-child(n+9) { animation-delay: 0.45s; }
-
-/* ── HIDDEN ── */
 .card.hidden { display: none; }
 
-/* ── MOBILE ── */
+/* MOBILE */
 @media (max-width: 600px) {
 .grid { grid-template-columns: repeat(2, 1fr); }
-.hero-divider { display: none; }
 .header-tag { display: none; }
-.feat-title { font-size: 1.5rem; }
 footer { flex-direction: column; align-items: flex-start; }
 .footer-note { text-align: left; }
 .hero-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+.store-tab { padding: 0.45rem 0.9rem; font-size: 0.68rem; }
 }
 
 @media (max-width: 400px) {
@@ -463,16 +441,12 @@ footer { flex-direction: column; align-items: flex-start; }
 .card-name { font-size: 0.78rem; }
 }
 
-/* ── SCROLL FADE IN ── */
 .reveal {
 opacity: 0;
 transform: translateY(20px);
 transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal.visible {
-opacity: 1;
-transform: none;
-}
+.reveal.visible { opacity: 1; transform: none; }
 </style>
 
 </head>
@@ -497,7 +471,6 @@ transform: none;
   <p class="hero-eyebrow">✦ Hand-picked for you</p>
   <h1 class="hero-title">Style that<br/><em>speaks</em> for itself.</h1>
   <p class="hero-desc">Carefully curated fashion, beauty, and lifestyle finds from Amazon Australia — updated regularly with the best deals.</p>
-
 </section>
 
 <!-- SEARCH -->
@@ -511,7 +484,8 @@ transform: none;
   </div>
 </div>
 
-  <!-- STORE FILTER TABS -->
+<!-- STORE FILTER TABS -->
+
 <div class="store-tabs">
   <button class="store-tab active" data-store="all">
     <span class="tab-dot tab-dot-all"></span> All
@@ -523,7 +497,7 @@ transform: none;
     <span class="tab-dot tab-dot-shein"></span> Shein
   </button>
   <button class="store-tab" data-store="aliexpress">
-    <span class="tab-dot tab-dot-ali"></span> AliExpress
+    <span class="tab-dot tab-dot-aliexpress"></span> AliExpress
   </button>
 </div>
 
@@ -531,42 +505,44 @@ transform: none;
 
 <div class="section-header reveal">
   <h2 class="section-title">All Picks</h2>
-  <span class="section-count" id="countLabel">40 items</span>
+  <span class="section-count" id="countLabel">18 items</span>
 </div>
 
 <div class="grid" id="productGrid">
 
-  <!-- FASHION -->
-<a class="card" href="https://s.click.aliexpress.com/e/_mPaj6hT" target="_blank" rel="noopener" data-cat="fashion" data-name="Blue Ombre Rope Detail Two-Piece Maxi Set">
+  <a class="card" href="https://s.click.aliexpress.com/e/_mPaj6hT" target="_blank" rel="noopener" data-store="aliexpress" data-name="Blue Ombre Rope Detail Two-Piece Maxi Set">
     <div class="card-img-wrap">
+      <span class="store-badge badge-aliexpress">AliExpress</span>
       <img class="card-img" src="EA0FE7D9-F57E-4816-A76C-918AF45E3486.jpeg" alt="Blue Ombre Rope Detail Two-Piece Maxi Set" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">Blue Ombre Rope Detail Two-Piece Maxi Set</span>
       <span class="card-shop">AliExpress</span>
     </div>
   </a>
-  
-  <a class="card" href="https://amzn.to/41tbBg2" target="_blank" rel="noopener" data-cat="Iphone case" data-name="Cute White Daisy Floral Case. From Ip 11 to 17pm">
+
+  <a class="card" href="https://amzn.to/41tbBg2" target="_blank" rel="noopener" data-store="amazon" data-name="Cute White Daisy Floral Case From Ip 11 to 17pm">
     <div class="card-img-wrap">
-      <img class="card-img" src="IMG_7614.png" alt="Cute White Daisy Floral Case. From Ip 11 to 17pm" loading="lazy"/>
+      <span class="store-badge badge-amazon">Amazon</span>
+      <img class="card-img" src="IMG_7614.png" alt="Cute White Daisy Floral Case" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">Iphone Case</span>
+      <span class="card-cat">iPhone Case</span>
       <span class="card-name">Cute White Daisy Floral Case. From Ip 11 to 17pm</span>
       <span class="card-shop">Amazon</span>
     </div>
   </a>
-  
-  <a class="card" href="https://amzn.to/4vaMEnB" target="_blank" rel="noopener" data-cat="Tech" data-name="The best budget Mackbook Neo">
+
+  <a class="card" href="https://amzn.to/4vaMEnB" target="_blank" rel="noopener" data-store="amazon" data-name="The best budget Macbook Neo">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="IMG_7612.jpeg" alt="Macbook Neo" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -579,22 +555,24 @@ transform: none;
     </div>
   </a>
 
-    <a class="card" href="https://amzn.to/4tcc3Lz" target="_blank" rel="noopener" data-cat="fashion" data-name="Solid Crop Tank Top">
+  <a class="card" href="https://amzn.to/4tcc3Lz" target="_blank" rel="noopener" data-store="amazon" data-name="Solid Crop Tank Top">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="IMG_7734.jpeg" alt="Solid Crop Tank Top" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">Solid Crop Tank Top</span>
       <span class="card-shop">Amazon</span>
     </div>
   </a>
 
-  <a class="card" href="https://linktw.in/OJMNaW" target="_blank" rel="noopener" data-cat="Crochet" data-name="Crochet Halter Bralette">
+  <a class="card" href="https://linktw.in/OJMNaW" target="_blank" rel="noopener" data-store="other" data-name="Crochet Halter Bralette">
     <div class="card-img-wrap">
+      <span class="store-badge badge-other">Shop</span>
       <img class="card-img" src="IMG_7678.jpeg" alt="Crochet Halter Bralette" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -607,8 +585,9 @@ transform: none;
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4sH1twm" target="_blank" rel="noopener" data-cat="Tech" data-name="Perfect Magnetic Selfie Light">
+  <a class="card" href="https://amzn.to/4sH1twm" target="_blank" rel="noopener" data-store="amazon" data-name="Perfect Magnetic Selfie Light">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="IMG_7682.jpeg" alt="Perfect Magnetic Selfie Light" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -621,50 +600,54 @@ transform: none;
     </div>
   </a>
 
-  <a class="card" href="https://onelink.shein.com/34/5kxyrmbwxzwk" target="_blank" rel="noopener" data-cat="fashion" data-name="Solid Bodycon Maxi Cami Dress">
+  <a class="card" href="https://onelink.shein.com/34/5kxyrmbwxzwk" target="_blank" rel="noopener" data-store="shein" data-name="Solid Bodycon Maxi Cami Dress">
     <div class="card-img-wrap">
+      <span class="store-badge badge-shein">Shein</span>
       <img class="card-img" src="IMG_0216.jpeg" alt="Solid Bodycon Maxi Cami Dress" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">Solid Bodycon Maxi Cami Dress</span>
       <span class="card-shop">Shein</span>
     </div>
   </a>
-  
-<a class="card" href="https://amzn.to/3NCzbUz" target="_blank" rel="noopener" data-cat="fashion" data-name="Women's Embroidered V-Neck Mini Dress">
+
+  <a class="card" href="https://amzn.to/3NCzbUz" target="_blank" rel="noopener" data-store="amazon" data-name="Women's Embroidered V-Neck Mini Dress">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="quality_restoration_20260325225113430.jpeg" alt="Women's Embroidered V-Neck Mini Dress" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">Women's Embroidered V-Neck Mini Dress</span>
       <span class="card-shop">Amazon</span>
     </div>
   </a>
 
-  <a class="card" href="https://onelink.shein.com/34/5kxxu8q2peki" target="_blank" rel="noopener" data-cat="fashion" data-name="Crinkle Textured Shirt and Shorts Set">
+  <a class="card" href="https://onelink.shein.com/34/5kxxu8q2peki" target="_blank" rel="noopener" data-store="shein" data-name="Crinkle Textured Shirt and Shorts Set">
     <div class="card-img-wrap">
+      <span class="store-badge badge-shein">Shein</span>
       <img class="card-img" src="IMG_0214.jpeg" alt="Crinkle Textured Shirt and Shorts Set" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">Crinkle Textured Shirt and Shorts Set</span>
       <span class="card-shop">Shein</span>
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4bQu5Mv" target="_blank" rel="noopener" data-cat="fashion" data-name="Loose Fit Sports Shorts Women">
+  <a class="card" href="https://amzn.to/4bQu5Mv" target="_blank" rel="noopener" data-store="amazon" data-name="Loose Fit Sports Shorts Women">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="183F3C8A-1DA6-4C2C-B1AD-525A532BF918.jpeg" alt="Loose Fit Sports Shorts Women" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -677,37 +660,40 @@ transform: none;
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/3PqJ6x3" target="_blank" rel="noopener" data-cat="fashion" data-name="OMKAGI 2 Piece Workout Sets for Women">
+  <a class="card" href="https://amzn.to/3PqJ6x3" target="_blank" rel="noopener" data-store="amazon" data-name="OMKAGI 2 Piece Workout Sets for Women">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="IMG_7525.jpeg" alt="OMKAGI 2 Piece Workout Sets for Women" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">OMKAGI 2 Piece Workout Sets for Women</span>
       <span class="card-shop">Amazon</span>
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4bUAPJo" target="_blank" rel="noopener" data-cat="fashion" data-name="Pink Floral Puff Sleeve Midi Dress">
+  <a class="card" href="https://amzn.to/4bUAPJo" target="_blank" rel="noopener" data-store="amazon" data-name="Pink Floral Puff Sleeve Midi Dress">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="IMG_0128.jpeg" alt="Pink Floral Puff Sleeve Midi Dress" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">Pink Floral Puff Sleeve Midi Dress</span>
       <span class="card-shop">Amazon</span>
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4uSaTGC" target="_blank" rel="noopener" data-cat="fashion" data-name="Womens Pajama Sets Lounge Set Cute Crop Cami Top and Shorts Ribbed">
+  <a class="card" href="https://amzn.to/4uSaTGC" target="_blank" rel="noopener" data-store="amazon" data-name="Womens Pajama Sets Lounge Set Cute Crop Cami Top and Shorts Ribbed">
     <div class="card-img-wrap">
-      <img class="card-img" src="IMG_7677.jpeg" alt="Womens Pajama Sets Lounge Set Cute Crop Cami Top and Shorts Ribbed" loading="lazy"/>
+      <span class="store-badge badge-amazon">Amazon</span>
+      <img class="card-img" src="IMG_7677.jpeg" alt="Womens Pajama Lounge Set" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
@@ -715,54 +701,58 @@ transform: none;
     <div class="card-info">
       <span class="card-cat">Fashion</span>
       <span class="card-name">Womens Pajama Sets Lounge Set Cute Crop Cami Top and Shorts Ribbed</span>
-      <span class="card-shop">Amazon haul</span>
+      <span class="card-shop">Amazon</span>
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4v9uoej" target="_blank" rel="noopener" data-cat="fashion" data-name="Women's Maxi Bodycon Dress Sexy Spaghetti Strap Sleeveless">
+  <a class="card" href="https://amzn.to/4v9uoej" target="_blank" rel="noopener" data-store="amazon" data-name="Women's Maxi Bodycon Dress Sexy Spaghetti Strap Sleeveless">
     <div class="card-img-wrap">
-      <img class="card-img" src="IMG_7555.png" alt="Women's Maxi Bodycon Dress Sexy Spaghetti Strap Sleeveless" loading="lazy"/>
+      <span class="store-badge badge-amazon">Amazon</span>
+      <img class="card-img" src="IMG_7555.png" alt="Women's Maxi Bodycon Dress" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">Women's Maxi Bodycon Dress Sexy Spaghetti Strap Sleeveless</span>
       <span class="card-shop">Amazon</span>
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4tbWHH9" target="_blank" rel="noopener" data-cat="inner wear" data-name="Women Floral Strawberry Print Cotton Underwear">
+  <a class="card" href="https://amzn.to/4tbWHH9" target="_blank" rel="noopener" data-store="amazon" data-name="Women Floral Strawberry Print Cotton Underwear">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="IMG_7558.jpeg" alt="Women Floral Strawberry Print Cotton Underwear" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">inner wear</span>
+      <span class="card-cat">Inner Wear</span>
       <span class="card-name">Women Floral Strawberry Print Cotton Underwear</span>
       <span class="card-shop">Amazon</span>
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4bxeEtB" target="_blank" rel="noopener" data-cat="fashion" data-name="MAKEMECHIC Women's Crochet Tie Back Cropped Camisole">
+  <a class="card" href="https://amzn.to/4bxeEtB" target="_blank" rel="noopener" data-store="amazon" data-name="MAKEMECHIC Women's Crochet Tie Back Cropped Camisole">
     <div class="card-img-wrap">
-      <img class="card-img" src="IMG_7563.jpeg" alt="Candle Set" loading="lazy"/>
+      <span class="store-badge badge-amazon">Amazon</span>
+      <img class="card-img" src="IMG_7563.jpeg" alt="MAKEMECHIC Crochet Camisole" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">MAKEMECHIC Women's Crochet Tie Back Cropped Camisole</span>
       <span class="card-shop">Amazon</span>
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4byYkIY" target="_blank" rel="noopener" data-cat="fashion" data-name="Gingham Boxer Shorts for Women">
+  <a class="card" href="https://amzn.to/4byYkIY" target="_blank" rel="noopener" data-store="amazon" data-name="Gingham Boxer Shorts for Women">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="quality_restoration_20260326100944736.jpeg" alt="Gingham Boxer Shorts for Women" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -775,15 +765,16 @@ transform: none;
     </div>
   </a>
 
-  <a class="card" href="https://amzn.to/4bP1CGI" target="_blank" rel="noopener" data-cat="fashion" data-name="Womens Square Neck Gingham Camisole">
+  <a class="card" href="https://amzn.to/4bP1CGI" target="_blank" rel="noopener" data-store="amazon" data-name="Womens Square Neck Gingham Camisole">
     <div class="card-img-wrap">
+      <span class="store-badge badge-amazon">Amazon</span>
       <img class="card-img" src="IMG_7611.jpeg" alt="Womens Square Neck Gingham Camisole" loading="lazy"/>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </div>
     <div class="card-info">
-      <span class="card-cat">fashion</span>
+      <span class="card-cat">Fashion</span>
       <span class="card-name">Womens Square Neck Gingham Camisole</span>
       <span class="card-shop">Amazon</span>
     </div>
@@ -804,17 +795,20 @@ transform: none;
 </footer>
 
 <script>
-  // ── SEARCH ──
   const searchInput = document.getElementById('searchInput');
   const cards = Array.from(document.querySelectorAll('.card'));
   const countLabel = document.getElementById('countLabel');
+  let activeStore = 'all';
 
   function filterCards() {
     const q = searchInput.value.toLowerCase().trim();
     let visible = 0;
     cards.forEach(card => {
       const name = card.dataset.name.toLowerCase();
-      if (!q || name.includes(q)) {
+      const store = card.dataset.store;
+      const matchSearch = !q || name.includes(q);
+      const matchStore = activeStore === 'all' || store === activeStore;
+      if (matchSearch && matchStore) {
         card.classList.remove('hidden');
         visible++;
       } else {
@@ -826,7 +820,15 @@ transform: none;
 
   searchInput.addEventListener('input', filterCards);
 
-  // ── SCROLL REVEAL ──
+  document.querySelectorAll('.store-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.store-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeStore = tab.dataset.store;
+      filterCards();
+    });
+  });
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
@@ -834,7 +836,6 @@ transform: none;
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // init count
   filterCards();
 </script>
 
